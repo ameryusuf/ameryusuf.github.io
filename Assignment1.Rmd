@@ -1,0 +1,36 @@
+---
+title: "Assignment1 for Data Products"
+author: "Amer Malik"
+date: "February 2, 2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Assignment #1 
+##Developing Data Products course 
+
+### Feb 2, 2019
+
+#### The following is an interactive map created with Leaflet package in R. It displays major cities of Pakistan, marked by circles. The size of the circle is proportional to the population of the city. 
+
+```{r, echo =FALSE, message=FALSE}
+library(leaflet)
+pkcities <- data.frame(name = c("Islamabad", "Karachi", "Lahore", "Faisalabad", "Peshawar",
+                                "Quetta", "Gujranwala", "Multan"),
+                       pop = c(1009832, 14916456, 11126285, 3204726, 1970042,
+                               1001205, 2027001, 1871843),
+                       lat = c(33.738045, 24.926294, 31.582045, 31.345394, 34.025917, 
+                               30.183270, 32.166351, 30.181459), 
+                       lng = c(73.084488, 67.022095, 74.329376, 73.429810, 71.560135,
+                               66.996452, 74.195900, 71.492157))
+details = paste(pkcities$name, ":", pkcities$pop, sep = "\n")
+pkcities %>%
+        leaflet() %>%
+        addTiles() %>%
+        addCircles(weight = 1, radius = sqrt(pkcities$pop) * 20, popup = details)
+
+```
+
