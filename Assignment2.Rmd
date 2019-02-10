@@ -1,0 +1,27 @@
+---
+title: "Week3 - Assignment #2"
+author: "Amer Malik"
+date: "February 10, 2019"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Feb 10, 2019
+
+#### The following is a plot developed with Plotly in R that shows the population of Pakistani cities.
+
+
+```{r, echo =FALSE, message=FALSE}
+library(plotly)
+pkcities <- data.frame(name = c("Islamabad", "Karachi", "Lahore", "Faisalabad", "Peshawar",
+                                "Quetta", "Gujranwala", "Multan"),
+                       pop = c(1009832, 14916456, 11126285, 3204726, 1970042,
+                               1001205, 2027001, 1871843))
+plot_ly(pkcities, x = pkcities$name, y = pkcities$pop)
+
+```
+
+
